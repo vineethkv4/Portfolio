@@ -3,9 +3,20 @@ import { SignJWT, jwtVerify } from "jose";
 export const VAULT_COOKIE_NAME = "vault_session";
 export const VAULT_COOKIE_MAX_AGE = 60 * 60 * 24; // 24 hours
 
+function readRuntimeSecret(name: "VAULT_JWT_SECRET" | "VAULT_PASSCODE"): string | undefined {
+  // Static member access so Next.js attaches these keys to the serverless env.
+  void process.env.VAULT_JWT_SECRET;
+  void process.env.VAULT_PASSCODE;
+  // Index into the live process.env object so Turbopack cannot compile the value to undefined.
+  const runtime = globalThis.process?.env;
+  const value = runtime?.[name];
+  if (typeof value !== "string") return undefined;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
 export function getJwtSecret(): Uint8Array {
-  // Direct member access so Next.js/Vercel attach this env to the serverless function.
-  const secret = process.env.VAULT_JWT_SECRET?.trim();
+  const secret = readRuntimeSecret("VAULT_JWT_SECRET");
   if (!secret) {
     throw new Error("VAULT_JWT_SECRET is not set");
   }
@@ -19,7 +30,7 @@ export function vaultSecretConfigError(): string {
 }
 
 export function getVaultPasscode(): string {
-  const passcode = process.env.VAULT_PASSCODE?.trim();
+  const passcode = readRuntimeSecret("VAULT_PASSCODE");
   if (!passcode) {
     throw new Error("VAULT_PASSCODE is not set");
   }
