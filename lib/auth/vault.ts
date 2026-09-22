@@ -2,7 +2,7 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
-import { getJwtSecret } from "@/lib/vault-auth";
+import { PASSCODE_TRACK_MAP } from "@/lib/signal/passcodes";
 import { isSignalTrack, type SignalTrack } from "@/lib/signal/types";
 
 export const SIGNAL_COOKIE_NAME = "signal_access";
@@ -25,34 +25,45 @@ function parseTracks(value: unknown): SignalTrack[] | null {
   return value;
 }
 
+async function keyFromPasscode(code: string): Promise<Uint8Array> {
+  const bytes = new TextEncoder().encode(
+    `signal-session:v1:${code.trim().toUpperCase()}`,
+  );
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return new Uint8Array(digest);
+}
+
 export async function createSignalToken(
   tracks: SignalTrack[],
+  code: string,
 ): Promise<string> {
   return new SignJWT({ tracks })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime(`${SIGNAL_JWT_MAX_AGE}s`)
-    .sign(getJwtSecret());
+    .sign(await keyFromPasscode(code));
 }
 
 export async function getSignalTracksFromToken(
   token: string,
 ): Promise<SignalTrack[] | null> {
-  try {
-    const { payload } = await jwtVerify(token, getJwtSecret());
-    const tracks = parseTracks(payload.tracks);
-    if (!tracks) return null;
-    // Reject older long-lived tokens that predate the 30-minute cap
-    if (
-      typeof payload.iat === "number" &&
-      Date.now() / 1000 - payload.iat > SIGNAL_JWT_MAX_AGE
-    ) {
-      return null;
+  for (const [code, tracks] of Object.entries(PASSCODE_TRACK_MAP)) {
+    try {
+      const { payload } = await jwtVerify(token, await keyFromPasscode(code));
+      if (
+        typeof payload.iat === "number" &&
+        Date.now() / 1000 - payload.iat > SIGNAL_JWT_MAX_AGE
+      ) {
+        return null;
+      }
+      const claimed = parseTracks(payload.tracks);
+      if (!claimed) continue;
+      return tracks;
+    } catch {
+      continue;
     }
-    return tracks;
-  } catch {
-    return null;
   }
+  return null;
 }
 
 export async function getSignalTracks(): Promise<SignalTrack[] | null> {

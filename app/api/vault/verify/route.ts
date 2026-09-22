@@ -4,7 +4,6 @@ import {
   createSignalToken,
   signalCookieBase,
 } from "@/lib/auth/vault";
-import { vaultSecretConfigError } from "@/lib/vault-auth";
 import { resolveTracks } from "@/lib/signal/passcodes";
 
 export const runtime = "nodejs";
@@ -23,7 +22,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const token = await createSignalToken(tracks);
+    const token = await createSignalToken(tracks, code);
     const response = NextResponse.json({ ok: true });
 
     response.cookies.set({
@@ -33,14 +32,9 @@ export async function POST(request: Request) {
     });
 
     return response;
-  } catch (error) {
-    const missingSecret =
-      error instanceof Error && error.message.includes("VAULT_JWT_SECRET");
+  } catch {
     return NextResponse.json(
-      {
-        ok: false,
-        error: missingSecret ? vaultSecretConfigError() : "Auth unavailable",
-      },
+      { ok: false, error: "Auth unavailable" },
       { status: 500 },
     );
   }
