@@ -3,8 +3,12 @@ import {
   VAULT_COOKIE_MAX_AGE,
   VAULT_COOKIE_NAME,
   createVaultToken,
+  vaultSecretConfigError,
   verifyPasscode,
 } from "@/lib/vault-auth";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
@@ -32,9 +36,14 @@ export async function POST(request: Request) {
     });
 
     return response;
-  } catch {
+  } catch (error) {
+    const missingSecret =
+      error instanceof Error && error.message.includes("VAULT_JWT_SECRET");
     return NextResponse.json(
-      { ok: false, error: "Auth unavailable" },
+      {
+        ok: false,
+        error: missingSecret ? vaultSecretConfigError() : "Auth unavailable",
+      },
       { status: 500 },
     );
   }

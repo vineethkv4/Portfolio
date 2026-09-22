@@ -4,7 +4,11 @@ import {
   createSignalToken,
   signalCookieBase,
 } from "@/lib/auth/vault";
+import { vaultSecretConfigError } from "@/lib/vault-auth";
 import { resolveTracks } from "@/lib/signal/passcodes";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
@@ -35,9 +39,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: missingSecret
-          ? "Server auth is not configured. Add VAULT_JWT_SECRET to .env.local."
-          : "Auth unavailable",
+        error: missingSecret ? vaultSecretConfigError() : "Auth unavailable",
       },
       { status: 500 },
     );

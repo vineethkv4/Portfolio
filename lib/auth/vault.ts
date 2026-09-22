@@ -2,6 +2,7 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
+import { getJwtSecret } from "@/lib/vault-auth";
 import { isSignalTrack, type SignalTrack } from "@/lib/signal/types";
 
 export const SIGNAL_COOKIE_NAME = "signal_access";
@@ -16,15 +17,6 @@ export function signalCookieBase() {
     sameSite: "lax" as const,
     path: "/",
   };
-}
-
-function getJwtSecret(): Uint8Array {
-  const secret =
-    process.env.VAULT_JWT_SECRET ?? process.env.SIGNAL_JWT_SECRET;
-  if (!secret) {
-    throw new Error("VAULT_JWT_SECRET is not set");
-  }
-  return new TextEncoder().encode(secret);
 }
 
 function parseTracks(value: unknown): SignalTrack[] | null {
