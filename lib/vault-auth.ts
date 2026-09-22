@@ -3,22 +3,9 @@ import { SignJWT, jwtVerify } from "jose";
 export const VAULT_COOKIE_NAME = "vault_session";
 export const VAULT_COOKIE_MAX_AGE = 60 * 60 * 24; // 24 hours
 
-/**
- * Dynamic lookup so Next.js does not inline `undefined` at build time.
- * Static `process.env.VAULT_JWT_SECRET` can be replaced during `next build`
- * and then ignore the real Vercel runtime value.
- */
-function readServerEnv(name: string): string | undefined {
-  const env = process.env as Record<string, string | undefined>;
-  const value = env[name];
-  if (typeof value !== "string") return undefined;
-  const trimmed = value.trim();
-  return trimmed.length > 0 ? trimmed : undefined;
-}
-
 export function getJwtSecret(): Uint8Array {
-  const secret =
-    readServerEnv("VAULT_JWT_SECRET") ?? readServerEnv("SIGNAL_JWT_SECRET");
+  // Direct member access so Next.js/Vercel attach this env to the serverless function.
+  const secret = process.env.VAULT_JWT_SECRET?.trim();
   if (!secret) {
     throw new Error("VAULT_JWT_SECRET is not set");
   }
@@ -26,14 +13,13 @@ export function getJwtSecret(): Uint8Array {
 }
 
 export function vaultSecretConfigError(): string {
-  const onVercel = Boolean(readServerEnv("VERCEL"));
-  return onVercel
+  return process.env.VERCEL
     ? "Server auth is not configured. Set VAULT_JWT_SECRET in Vercel Environment Variables, then redeploy."
     : "Server auth is not configured. Add VAULT_JWT_SECRET to .env.local.";
 }
 
 export function getVaultPasscode(): string {
-  const passcode = readServerEnv("VAULT_PASSCODE");
+  const passcode = process.env.VAULT_PASSCODE?.trim();
   if (!passcode) {
     throw new Error("VAULT_PASSCODE is not set");
   }
