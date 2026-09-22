@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Geist Pixel Triangle";
+  src:
+    url("/fonts/GeistPixel-Triangle.woff2") format("woff2"),
+    url("/fonts/GeistPixel-Triangle.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Square";
+  src:
+    url("/fonts/GeistPixel-Square.woff2") format("woff2"),
+    url("/fonts/GeistPixel-Square.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Line";
+  src:
+    url("/fonts/GeistPixel-Line.woff2") format("woff2"),
+    url("/fonts/GeistPixel-Line.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Grid";
+  src:
+    url("/fonts/GeistPixel-Grid.woff2") format("woff2"),
+    url("/fonts/GeistPixel-Grid.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Circle";
+  src:
+    url("/fonts/GeistPixel-Circle.woff2") format("woff2"),
+    url("/fonts/GeistPixel-Circle.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f7f5f0;
+  --ink: #17141f;
+  --ink-soft: #3d3550;
+  --muted: #726c7a;
+  --line: rgba(23, 20, 31, 0.14);
+  --line2: rgba(23, 20, 31, 0.07);
+  --dark: #131019;
+  --dark-soft: rgba(247, 245, 240, 0.06);
+  --teal: #1f97a8;
+
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--bg);
+  --card-foreground: var(--ink);
+  --popover: var(--bg);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bg);
+  --secondary: #ebe8e1;
+  --secondary-foreground: var(--ink);
+  --muted-foreground: var(--muted);
+  --accent: #ebe8e1;
+  --accent-foreground: var(--ink);
+  --destructive: #b42318;
+  --destructive-foreground: var(--bg);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--ink);
+  --radius: 0;
+
+  /* Geist Pixel faces (files in /public/fonts) */
+  --font-pixel-triangle: "Geist Pixel Triangle";
+  --font-pixel-square: "Geist Pixel Square";
+  --font-pixel-line: "Geist Pixel Line";
+  --font-pixel-grid: "Geist Pixel Grid";
+  --font-pixel-circle: "Geist Pixel Circle";
+  /* Primary display — circle is closest to the old Doto look */
+  --font-pixel: var(--font-pixel-circle);
+  --font-doto: var(--font-pixel-circle);
+  --font-display-serif: "IBM Plex Serif", serif;
+
+  /* Section backgrounds — Ascent / Signal / Connect TBD */
+  --section-bg-identity: var(--dark);
+  --section-fg-identity: var(--bg);
+  --ascent-bg: #050505;
+  --section-bg-ascent: var(--ascent-bg);
+  --signal-bg: #050505;
+  --signal-green: #00cf2d;
+  --section-bg-signal: var(--signal-bg);
+  --section-bg-connect: var(--signal-bg);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-teal: var(--teal);
+  --color-dark: var(--dark);
+  --color-signal-green: var(--signal-green);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-pixel);
+  --font-serif: var(--font-display-serif);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background:
+    radial-gradient(circle, rgba(23, 20, 31, 0.09) 1px, transparent 1.4px)
+      0 0 / 16px 16px,
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.dot-grid-bg {
+  background:
+    radial-gradient(circle, rgba(23, 20, 31, 0.09) 1px, transparent 1.4px)
+      0 0 / 16px 16px,
+    var(--bg);
+}
+
+/* Identity / dark sections — tiled "+" glyphs via SVG data-uri (no DOM nodes) */
+.plus-grid-bg {
+  background-color: #050505;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='14' y='18' text-anchor='middle' font-family='monospace' font-size='10' fill='rgba(255,255,255,0.07)'%3E+%3C/text%3E%3C/svg%3E");
+  background-size: 28px 28px;
+}
+
+/* Ascent / light sections — diagonal hatch overlay (~5% opacity) */
+.hatch-grid-bg {
+  background-color: var(--ascent-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M0 12L12 0' stroke='rgba(23,20,31,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 12px 12px;
+}
+
+/* Signal / dark sections — short dashes on black */
+.signal-grid-bg {
+  background-color: var(--signal-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 7h4' stroke='rgba(255,255,255,0.07)' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 14px 14px;
+}
+
+/* Keep extra Signal rows reachable without leaving the viewport frame */
+.signal-work-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.illustration-float {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.laptop-dot {
+  animation: pulseDot 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .illustration-float,
+  .laptop-dot {
+    animation: none;
+  }
+}
+
+.prose-case-study h2 {
+  font-family: var(--font-pixel), sans-serif;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-case-study p {
+  margin-bottom: 1rem;
+}
+
+.prose-case-study ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
