@@ -113,8 +113,12 @@ function createGlitchEngine(
   canvas: HTMLCanvasElement,
   wrap: HTMLElement,
 ): Engine | null {
-  const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false });
-  if (!gl) return null;
+  const glContext = canvas.getContext("webgl", {
+    alpha: true,
+    premultipliedAlpha: false,
+  });
+  if (!glContext) return null;
+  const gl: WebGLRenderingContext = glContext;
 
   const vs = compile(gl, gl.VERTEX_SHADER, VS);
   const fs = compile(gl, gl.FRAGMENT_SHADER, FS);
