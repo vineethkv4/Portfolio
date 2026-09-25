@@ -15,6 +15,8 @@ export type Project = {
   /** TODO: swap per-project photography */
   image: string;
   href: string;
+  /** Live product URL for the Launch control. Falls back to `href`. */
+  launchHref?: string;
   tracks: SignalTrack[];
   content: {
     default: SignalProjectContent;
@@ -46,6 +48,7 @@ export const projects: Project[] = [
     tags: ["DATA", "WEB"],
     image: "/images/projects/official_charts/cover.jpg",
     href: "/work/official-charts",
+    launchHref: "https://www.officialcharts.pro/",
     tracks: ["design"],
     content: {
       default: pendingCopy("case study summary pending"),
@@ -55,7 +58,7 @@ export const projects: Project[] = [
     id: "loreal-echo",
     slug: "loreal",
     index: "002",
-    name: "Loréal ECHO",
+    name: "L'Oréal ECHO",
     tags: ["BRANDING", "WEB"],
     image: PLACEHOLDER_B,
     href: "/work/loreal",
@@ -113,7 +116,7 @@ export const projects: Project[] = [
     tags: ["PRODUCT", "DATA"],
     image: PLACEHOLDER_F,
     href: "/work/explorer-plus",
-    tracks: ["design", "tech"],
+    tracks: ["design"],
     content: {
       default: pendingCopy("case study summary pending"),
     },

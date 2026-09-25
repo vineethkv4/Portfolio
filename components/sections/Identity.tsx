@@ -34,10 +34,10 @@ const identityImages: ScrollImage[] = [
 ];
 
 const SECTION_EYEBROW_CLASS =
-  "text-xs uppercase tracking-[0.18em] text-gray-500";
+  "text-xs uppercase tracking-[0.18em] text-gray-200";
 const SECTION_BODY_CLASS = "text-sm text-white text-[1.8rem]";
 const SECTION_STATEMENT_CLASS =
-  "break-words font-[family-name:var(--font-display-serif)] text-3xl font-bold leading-[1.05] tracking-tight text-white md:text-4xl lg:text-5xl";
+  "break-words font-[family-name:var(--font-display-serif)] text-3xl font-bold leading-[1.5] tracking-tight text-white md:text-4xl lg:text-5xl";
 
 /** Soft ceiling for the designed overlap composition — beyond this, review layout. */
 export const IDENTITY_HEADLINE_SOFT_LIMIT = 140;
@@ -85,7 +85,7 @@ function headlineClassName(length: number) {
   if (length > HEADLINE_SCALE_THRESHOLD) {
     return "text-[clamp(1.75rem,3vw,2.75rem)] leading-[1.12]";
   }
-  return "text-[clamp(2.25rem,4vw,3.75rem)] leading-[1.08]";
+  return "text-[clamp(2.25rem,4vw,3rem)] leading-[1.08]";
 }
 
 export function Identity({ headline }: IdentityProps) {
@@ -145,7 +145,7 @@ export function Identity({ headline }: IdentityProps) {
             <section
               ref={section0Ref}
               data-section-index={0}
-              className="flex min-h-screen flex-col justify-center"
+              className="flex min-h-screen flex-col justify-center mt-30"
             >
               <TextGenerateEffect
                 words={headline}
@@ -196,10 +196,10 @@ export function Identity({ headline }: IdentityProps) {
                   <div className="flex flex-col divide-y divide-white/5">
                     {STATS.map((stat) => (
                       <div key={stat.label} className="px-5 py-4">
-                        <p className="text-xs uppercase tracking-[0.18em] text-gray-500">
+                        <p className="text-xs uppercase tracking-[0.18em] text-gray-200">
                           {stat.label}
                         </p>
-                        <p className="mt-2 text-base font-semibold text-white md:text-lg">
+                        <p className="mt-2 text-base font-semibold text-gray-300 md:text-lg">
                           {stat.value}
                         </p>
                       </div>
@@ -238,7 +238,7 @@ export function Identity({ headline }: IdentityProps) {
               >
                 <p className={SECTION_EYEBROW_CLASS}>MY PHILOSOPHY ↘</p>
                 <TextGenerateEffect
-                  words="I VALUE CLARITY, MEANING, AND FUNCTIONALITY — BOTH IN DESIGN AND IN LIFE. I AM CLOSE TO THE IDEA OF CONSCIOUS MINIMALISM: LEAVING ONLY WHAT MAKES SENSE AND WORKS FOR RESULTS. I LOVE SIMPLE INTERFACES WITH DEEP MEANING — AS WELL AS SIMPLE THINGS THAT BRING TRUE PLEASURE."
+                  words="CLARITY OVER CLEVERNESS. I STRIP OUT WHAT DOESN'T EARN ITS PLACE AND KEEP WHAT ACTUALLY WORKS. A GOOD INTERFACE ISN'T DECORATED — IT'S DECIDED. EVERY DETAIL SHOULD HAVE A REASON TO EXIST, OR IT SHOULDN'T EXIST."
                   start={section2InView}
                   staggerDelay={0.05}
                   className={cn(SECTION_BODY_CLASS, "mt-6 font-normal")}
@@ -253,17 +253,12 @@ export function Identity({ headline }: IdentityProps) {
               >
                 <p className={SECTION_EYEBROW_CLASS}>MY LIFESTYLE ↘</p>
                 <TextGenerateEffect
-                  words="I LOOK FOR AESTHETICS EVERYWHERE: IN THE FORMS OF NATURE, IN THE DETAILS OF ARCHITECTURE, IN THE COLORS OF CITY STREETS, AND EVEN IN THE SIMPLE THINGS OF EVERYDAY LIFE. IT'S NOT JUST A HOBBY — IT'S A WAY OF SEEING THE WORLD."
+                  words="I NOTICE THE DETAIL BEFORE ANYTHING ELSE — SPACING, TIMING, THE WEIGHT OF A TYPEFACE. THEN I NOTICE HOW IT'S BUILT: WHAT HOLDS UP UNDER REAL USE AND WHAT'S JUST DECORATION. I WORK IN LONG, UNINTERRUPTED STRETCHES, MOVING BETWEEN THE TWO WITHOUT TREATING THEM AS SEPARATE JOBS. DESIGN THAT DOESN'T CONSIDER HOW IT'S BUILT ISN'T FINISHED — IT'S JUST A PICTURE."
                   start={section3InView}
                   staggerDelay={0.05}
                   className={cn(SECTION_BODY_CLASS, "mt-6 font-normal")}
                 />
-                <TextGenerateEffect
-                  words="EVERY PROJECT FOR ME IS MORE THAN A TASK. IT'S A STORY THAT I HELP TELL THROUGH DESIGN. I BELIEVE THAT A GOOD INTERFACE IS NOT JUST ABOUT COLORS AND FONTS, BUT ABOUT THE FEELINGS IT EVOKES."
-                  start={section3InView}
-                  staggerDelay={0.05}
-                  className={cn(SECTION_BODY_CLASS, "mt-6 font-normal")}
-                />
+                
               </section>
             </div>
           </div>

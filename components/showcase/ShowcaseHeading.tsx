@@ -9,11 +9,12 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type ShowcaseHeadingProps = {
   title: string;
+  color: string;
   /** Left intro column — animation finishes when this becomes sticky (`top-8`). */
   endTrigger: HTMLElement | null;
 };
 
-export function ShowcaseHeading({ title, endTrigger }: ShowcaseHeadingProps) {
+export function ShowcaseHeading({ title, color, endTrigger }: ShowcaseHeadingProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -53,11 +54,12 @@ export function ShowcaseHeading({ title, endTrigger }: ShowcaseHeadingProps) {
   return (
     <div
       ref={wrapperRef}
-      className="pointer-events-none sticky top-0 z-0 pt-24 pb-[100px] pt-[180px]"
+      className="pointer-events-none sticky top-0 z-0 pt-24 pb-[100px] pt-[100px]"
     >
       <h1
         ref={headingRef}
-        className="pl-6 font-[family-name:var(--font-display-serif)] text-[clamp(2.25rem,10vw,15rem)] font-medium leading-[0.82] tracking-[-0.04em] text-signal-green whitespace-nowrap sm:pl-16"
+        className="pl-6 font-[family-name:var(--font-display-serif)] text-[clamp(2.25rem,10vw,15rem)] font-medium leading-[0.82] tracking-[-0.04em] whitespace-nowrap sm:pl-16"
+        style={{ color }}
       >
         {title}
       </h1>

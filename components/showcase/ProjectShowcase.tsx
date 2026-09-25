@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ShowcaseBackButton } from "@/components/showcase/ShowcaseBackButton";
 import { ShowcaseHeading } from "@/components/showcase/ShowcaseHeading";
 import { ShowcaseMedia } from "@/components/showcase/ShowcaseMedia";
-import { showcaseImage, type Showcase } from "@/data/showcases";
+import { type Showcase } from "@/data/showcases";
 import { connectContent } from "@/content/sections/connect";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,10 @@ type ProjectShowcaseProps = {
 };
 
 export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
-  const frames = [0, 1, 2, 3, 4].map((index) => showcaseImage(showcase, index));
+  const frames = showcase.images.map((src, index) => ({
+    src,
+    todo: showcase.imageTodos?.[index],
+  }));
   const [leftAside, setLeftAside] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -79,7 +82,11 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
     <article className="relative bg-[#050505] text-white">
       <ShowcaseBackButton />
       <div className="relative">
-        <ShowcaseHeading title={showcase.title} endTrigger={leftAside} />
+        <ShowcaseHeading
+          title={showcase.title}
+          color={showcase.headerColor}
+          endTrigger={leftAside}
+        />
 
         <section className="relative z-10 grid w-full grid-cols-1 items-start gap-0 pb-16 pl-6 sm:pl-8 lg:grid-cols-[minmax(260px,32%)_1fr] lg:gap-0 lg:pb-24">
         <motion.aside
@@ -93,7 +100,7 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
           <div className="flex items-start gap-4">
             <span className="hidden size-10 shrink-0 lg:block" aria-hidden />
             <div className="min-w-0 flex-1 font-[family-name:var(--font-display-serif)]">
-              <p className="text-[15px] leading-relaxed text-white/50 italic sm:text-base">
+              <p className="text-[15px] leading-relaxed text-white/80 italic sm:text-base">
                 {showcase.lede}
               </p>
 
@@ -113,14 +120,14 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
               <div className="mt-8 border-t border-white/15 pt-2">
                 {sections.map((section) => (
                   <section key={section.title} className="mt-8">
-                    <h3 className="mb-4 flex items-center gap-3 text-[13px] text-white/45">
+                    <h3 className="mb-4 flex items-center gap-3 text-[13px] text-white/65">
                       <span className="shrink-0">{section.title}</span>
                       <span
                         className="h-px min-w-8 flex-1 bg-white/20"
                         aria-hidden
                       />
                     </h3>
-                    <div className="space-y-4 text-[15px] leading-relaxed text-white/80">
+                    <div className="space-y-4 text-[15px] leading-relaxed text-white">
                       {section.paragraphs.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
@@ -137,6 +144,16 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
                         ))}
                       </ul>
                     ) : null}
+                    {section.title === "Impact" && showcase.quote ? (
+                      <blockquote className="mt-6 border-l border-white/25 pl-4">
+                        <p className="text-[15px] leading-relaxed text-white/75 italic">
+                          “{showcase.quote.text}”
+                        </p>
+                        <footer className="mt-3 font-[family-name:var(--font-mono)] text-[11px] tracking-[0.08em] text-white/45">
+                          — {showcase.quote.attribution}
+                        </footer>
+                      </blockquote>
+                    ) : null}
                   </section>
                 ))}
               </div>
@@ -145,10 +162,11 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
         </motion.aside>
 
         <div className="relative z-10 flex flex-col gap-4 lg:gap-4">
-          {frames.map((src, index) => (
+          {frames.map((frame, index) => (
             <ShowcaseMedia
-              key={`${src}-${index}`}
-              src={src}
+              key={`${frame.src || frame.todo}-${index}`}
+              src={frame.src}
+              todo={frame.todo}
               className="aspect-[16/9] w-full"
               parallax={36}
             />

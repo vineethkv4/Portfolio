@@ -44,8 +44,10 @@ function HoverText({
 
 export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
   const { navigate } = usePageTransition();
+  const launchHref = project.launchHref ?? project.href;
+  const launchIsExternal = launchHref.startsWith("http");
 
-  function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
+  function handleCaseClick(event: React.MouseEvent<HTMLAnchorElement>) {
     if (!isActive) {
       event.preventDefault();
       onActivate();
@@ -61,16 +63,25 @@ export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
     }
   }
 
+  function handleLaunchClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    event.stopPropagation();
+    if (!isActive) {
+      event.preventDefault();
+      onActivate();
+      return;
+    }
+    if (!launchIsExternal && launchHref.startsWith("/")) {
+      event.preventDefault();
+      navigate(launchHref);
+    }
+  }
+
   const indexLabel = `[ ${project.index} ]`;
 
   return (
-    <Link
-      href={project.href}
+    <div
       onMouseEnter={onActivate}
-      onFocus={onActivate}
-      onClick={handleClick}
-      aria-current={isActive ? "true" : undefined}
-      className="group relative isolate flex h-16 w-full cursor-pointer items-center justify-between px-[26px] outline-none sm:h-[4.25rem]"
+      className="group relative isolate flex h-16 w-full items-center justify-between px-[26px] sm:h-[4.25rem]"
     >
       <span
         className={cn(
@@ -88,7 +99,13 @@ export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
         aria-hidden
       />
 
-      <span className="relative z-[1] flex w-[50%] min-w-0 items-center gap-4 sm:gap-6">
+      <Link
+        href={project.href}
+        onFocus={onActivate}
+        onClick={handleCaseClick}
+        aria-current={isActive ? "true" : undefined}
+        className="relative z-[1] flex w-[50%] min-w-0 cursor-pointer items-center gap-4 outline-none sm:gap-6"
+      >
         <HoverText
           text={indexLabel}
           active={isActive}
@@ -106,7 +123,7 @@ export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
         >
           {project.name}
         </span>
-      </span>
+      </Link>
 
       <span className="relative z-[1] flex h-5 shrink-0 items-center">
         <span
@@ -126,15 +143,20 @@ export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
           ))}
         </span>
 
-        <span
+        <Link
+          href={launchHref}
+          onFocus={onActivate}
+          onClick={handleLaunchClick}
+          target={launchIsExternal ? "_blank" : undefined}
+          rel={launchIsExternal ? "noopener noreferrer" : undefined}
           className={cn(
-            "flex h-5 items-center gap-1 font-[family-name:var(--font-mono)] text-[10px] leading-none tracking-[0.16em] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.55)] sm:text-[11px]",
+            "flex h-5 cursor-pointer items-center gap-1 font-[family-name:var(--font-mono)] text-[10px] leading-none tracking-[0.16em] uppercase outline-none [text-shadow:0_1px_8px_rgba(0,0,0,0.55)] sm:text-[11px]",
             isActive ? "text-signal-green" : "text-white/40",
           )}
         >
           <span>Launch</span>
           <ArrowUpRight className="size-3.5 shrink-0" aria-hidden />
-        </span>
+        </Link>
       </span>
 
       <motion.span
@@ -144,6 +166,6 @@ export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
         transition={{ duration: 0.25, ease: "easeOut" }}
         aria-hidden
       />
-    </Link>
+    </div>
   );
 }

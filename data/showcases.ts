@@ -15,6 +15,8 @@ export type Showcase = {
   title: string;
   shortTitle: string;
   lede: string;
+  /** Sticky case-study heading color. Defaults to signal green. */
+  headerColor: string;
   facts: ShowcaseFacts;
   overview: string[];
   myRole: string[];
@@ -22,8 +24,14 @@ export type Showcase = {
   built: ShowcaseBuilt;
   impact: string[];
   images: string[];
+  /** Visible labels when a frame has no `src` yet. */
+  imageTodos?: string[];
   ctaStatement: string;
   ctaAccent: string;
+  quote?: {
+    text: string;
+    attribution: string;
+  };
 };
 
 /** Existing asset — user path was project/; repo file is projects/ */
@@ -38,6 +46,7 @@ function pendingCase(input: {
   title: string;
   shortTitle: string;
   lede: string;
+  headerColor?: string;
   facts: ShowcaseFacts;
   overview: string[];
   ctaStatement?: string;
@@ -45,6 +54,7 @@ function pendingCase(input: {
 }): Showcase {
   return {
     ...input,
+    headerColor: input.headerColor ?? "#00cf2d",
     myRole: ["Case study narrative coming soon."],
     challenge: ["Case study narrative coming soon."],
     built: {
@@ -59,28 +69,57 @@ function pendingCase(input: {
 }
 
 export const showcases: Showcase[] = [
-  pendingCase({
+  {
     slug: "loreal",
-    title: "L'ORÉAL Echo. L'ORÉAL Echo. ",
+    title: "L'Oréal ECHO. L'Oréal ECHO",
     shortTitle: "L'Oréal ECHO",
-    lede: "A branded digital experience built around discovery, ritual, and product storytelling.",
+    headerColor: "#00cf2d",
+    lede: "Brand Power Echo — Global Analytics & Reporting Platform",
     facts: {
-      role: "Lead Designer",
-      scope: "Brand, web",
-      tools: "Figma, React, Next.js, Motion",
-      status: "Delivered",
+      role: "Lead Designer, design-to-code",
+      scope: "Global dashboard · 5 markets live",
+      tools: "Figma, Cursor",
+      status: "Launched",
     },
     overview: [
-      "A branded digital experience built around discovery, ritual, and product storytelling.",
-      "The work leans on oversized type, cinematic product frames, and a restrained interface so the imagery carries the narrative.",
+      "ECHO is L'Oréal's global brand analytics platform — a single dashboard consolidating brand health, equity, funnel, profiling, and trend data across markets, categories, brands, audiences, and study types. Built for leadership and marketing teams to compare brand performance, decode consumer perception, and track trends without waiting on a static report.",
+      "Launched across 5 markets with more being added as the platform scales globally.",
     ],
-    ctaStatement: "Got something in mind?",
-    ctaAccent: "Let's talk it through.",
-  }),
+    myRole: [
+      "Led the design team of 3 designers end-to-end — from data harmonisation and UX architecture through to interactive dashboard design. On the technical side, personally owned the design-to-code build, translating the design system into working frontend using an AI-assisted workflow via Cursor.",
+      "This dual ownership — designing the system and shipping the code behind it — meant less lost in translation between design intent and what actually got built.",
+    ],
+    challenge: [
+      "ECHO needed to hold an unusually large surface area of data — multiple study types, dozens of KPIs, brand-vs-brand comparisons, market filters, audience profiling — without turning into a wall of charts. Every module (Single Brand × Multi Country, Brand Ranking, Brand Profiling, Trends, and more) needed its own comparison logic, but all of it had to feel like one coherent system, not a stitched-together set of tools.",
+      "On top of the design problem, there was a delivery problem: six months of overall development, with new major modules — like Brand Profiling and Trends — needing to go from design to shipped code in roughly two weeks each.",
+    ],
+    built: {
+      paragraphs: [],
+      bullets: [
+        "A modular dashboard architecture — 7 live analysis modules (Single Country × Multi Brands, Single Brand × Multi Country, Single Brand × Targets, Multi Brand × Multi Country, Brand Ranking per KPI, Brand Profiling, Trends), with 6 more in the roadmap (Mappings, Category Drivers, Cross Category Analysis, Megabrand, Touch Points, Ad Module) — all sharing one consistent visual and interaction language.",
+        "A structured filtering system for market, time period (by half-year, fiscal year, or custom range), and brand/category selection — built to stay usable as the number of markets grows.",
+        "Dense, multi-brand comparison views — side-by-side KPI, ranking, and perception charts across competitor brands, designed to stay legible even at high data density.",
+        "A design-to-code pipeline — using Cursor to take modules like Brand Profiling and Trends from Figma to functioning frontend in about two weeks, keeping design fidelity intact through the handoff.",
+      ],
+    },
+    impact: [
+      "5 markets live at launch, with the platform architected to scale to more as new regions onboard.",
+      "40–50% reduction in UI development workload and 20–30% reduction in functionality build effort, per direct feedback from the engineering team, since most of the frontend arrived pre-built from the design-to-code workflow rather than from scratch.",
+      "Adopted as the primary brand analytics tool for leadership and marketing teams globally, replacing fragmented, market-by-market reporting.",
+    ],
+    quote: {
+      text: "The code you shared for the UI has been really helpful. For the UI, we only made minimal design adjustments, which allowed us to cut the workload by around 40–50%. For the functionality, we only needed to tweak some parts, resulting in a 20–30% reduction in effort compared to building everything from scratch.",
+      attribution: "Engineering Lead, L'Oréal ECHO",
+    },
+    images: frames(13),
+    ctaStatement: "Have something to build?",
+    ctaAccent: "I'm in.",
+  },
   {
     slug: "official-charts",
     title: "Official Charts. Official Charts",
     shortTitle: "Official Charts",
+    headerColor: "#d25ebb",
     lede: "A fully responsive web-based tool designed to adapt seamlessly across web, tablet, and mobile — in both light and dark themes — under a tight delivery timeline.",
     facts: {
       role: "UX/UI Design, Prototyping",
@@ -165,21 +204,59 @@ export const showcases: Showcase[] = [
     },
     overview: ["A small brand with a large visual voice."],
   }),
-  pendingCase({
+  {
     slug: "explorer-plus",
     title: "Explorer+. Explorer+",
     shortTitle: "Explorer+",
-    lede: "An exploration product designed around glanceable maps and quiet UI.",
+    headerColor: "#00cf2d",
+    lede: "Your All-in-One Data Exploration Suite",
     facts: {
-      role: "Product Designer",
-      scope: "Product, mobile",
-      tools: "Figma, React Native, Maps",
-      status: "Delivered",
+      role: "UX Designer, UI Architect",
+      scope: "Insights platform · 30+ clients",
+      tools: "Figma",
+      status: "Live",
     },
     overview: [
-      "An exploration product designed around glanceable maps and quiet UI.",
+      "Explorer+ puts brand tracking data in the hands of the people who need it. It's an insights-ready exploration platform that lets teams interrogate a single data source — self-serve analysis and visual reporting, without waiting on an analyst to pull a report. Built to simplify data analysis and visualization so users can explore performance, uncover insights, and make faster, smarter decisions without needing technical expertise.",
+      "Onboarded by 30+ clients.",
     ],
-  }),
+    myRole: [
+      "UX Designer and UI Architect on Explorer+. Worked directly with project managers on the requirement — teams needed to know the moment a brand's performance crossed a benchmark, above or below — and sat with the team to shape that into the Alerts feature, owning the UX side of the solution. Also designed the admin panel for theme customization, built to let one non-technical admin spin up a complete client dashboard — no developer or designer involvement required — and switch the visual theme to match each client's brand guidelines.",
+    ],
+    challenge: [
+      "The admin panel needed to let a non-designer configure a fully branded dashboard for any client, but the person running that setup wasn't equipped to make design decisions — color systems, styling, brand fidelity weren't their skillset. The fix was a theme upload flow: a designer sets a client's brand colors in a lightweight Excel-based tool — a five-minute task well within a designer's comfort zone — and the rest of the dashboard's theme switches over automatically, no manual restyling required.",
+    ],
+    built: {
+      paragraphs: [
+        "Four core exploration modules, one consistent interaction language, plus the systems that make the platform scale across clients:",
+      ],
+      bullets: [
+        "Snapshot — visualization module supporting pie charts, bar charts, sortable tables, and aster plots",
+        "Crosstab — dynamic table generation with slice, dice, and filtering capabilities for granular-level analysis",
+        "Brand Analysis — brand performance assessment via KPIs grouped into Brand Dependent and Brand Independent categories",
+        "Ask Me — natural-language query module that pulls instant insights from Snapshot, Crosstab, or Brand Analysis, removing the need for manual selection",
+        "Alerts — threshold-based notifications when a benchmark exceeds or drops",
+        "Admin theming panel — a five-minute, designer-driven color upload flow that lets one admin platform stand up fully branded dashboards for any client, with no per-client dev or design work",
+      ],
+    },
+    impact: [
+      "Client onboarding for a new dashboard cut to a maximum of 1 week, down from a slower process largely bottlenecked by the admin needing to manually analyze and set up each client's data.",
+      "The theming step itself — once a multi-day design task — now takes a maximum of 1 day.",
+      "30+ clients onboarded onto the platform.",
+    ],
+    // TODO: replace empty srcs with Explorer+ screenshots
+    images: ["", "", "", "", "", ""],
+    imageTodos: [
+      "Explorer+ Snapshot module screenshot",
+      "Explorer+ Crosstab module screenshot",
+      "Explorer+ Brand Analysis module screenshot",
+      "Explorer+ Ask Me module screenshot",
+      "Explorer+ Alerts module screenshot",
+      "Explorer+ Admin theming panel screenshot",
+    ],
+    ctaStatement: "Have something to build?",
+    ctaAccent: "I'm in.",
+  },
   pendingCase({
     slug: "vault",
     title: "The Vault. The Vault",
