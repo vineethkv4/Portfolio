@@ -9,27 +9,26 @@ import type { ScrollImage } from "@/components/identity/ScrollImageSwap";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { cn } from "@/lib/utils";
 
-// TODO: swap these placeholder image paths for real photos per section
 const identityImages: ScrollImage[] = [
   {
     index: 0,
-    src: "/images/about_image.png",
+    src: "/images/about_image-01.png",
     alt: "Vineeth Vijayan portrait",
   },
   {
     index: 1,
-    src: "/images/placeholders/analytics-quotient.jpg",
-    alt: "Vineeth Vijayan — placeholder, TODO replace",
+    src: "/images/about_image-02.png",
+    alt: "Vineeth Vijayan",
   },
   {
     index: 2,
-    src: "/images/placeholders/ivista.jpg",
-    alt: "Vineeth Vijayan — placeholder, TODO replace",
+    src: "/images/about_image-03.png",
+    alt: "Vineeth Vijayan",
   },
   {
     index: 3,
-    src: "/images/placeholders/ibizsoft.jpg",
-    alt: "Vineeth Vijayan — placeholder, TODO replace",
+    src: "/images/about_image-04.png",
+    alt: "Vineeth Vijayan",
   },
 ];
 
