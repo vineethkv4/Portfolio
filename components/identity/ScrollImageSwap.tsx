@@ -70,7 +70,7 @@ export function ScrollImageSwap({ images }: ScrollImageSwapProps) {
           key={image.index}
           src={image.src}
           alt={image.alt}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain"
           initial={false}
           animate={{
             opacity: image.index === activeIndex ? 1 : 0,

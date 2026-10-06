@@ -17,6 +17,8 @@ export type Project = {
   href: string;
   /** Live product URL for the Launch control. Falls back to `href`. */
   launchHref?: string;
+  /** Right-side row label. Defaults to Launch. */
+  actionLabel?: string;
   tracks: SignalTrack[];
   content: {
     default: SignalProjectContent;
@@ -25,12 +27,8 @@ export type Project = {
   };
 };
 
-const PLACEHOLDER_B = "/images/work-002.jpg";
 const PLACEHOLDER_C = "/images/work-003.jpg";
 const PLACEHOLDER_D = "/images/work-004.jpg";
-const PLACEHOLDER_E = "/images/work-005.jpg";
-const PLACEHOLDER_F = "/images/work-006.jpg";
-const PLACEHOLDER_G = "/images/work-007.jpg";
 
 function pendingCopy(note: string): SignalProjectContent {
   return {
@@ -60,8 +58,9 @@ export const projects: Project[] = [
     index: "002",
     name: "L'Oréal ECHO",
     tags: ["BRANDING", "WEB"],
-    image: PLACEHOLDER_B,
+    image: "/images/projects/loreal_echo/cover.jpg",
     href: "/work/loreal",
+    actionLabel: "Case study",
     tracks: ["tech"],
     content: {
       default: pendingCopy("case study summary pending"),
@@ -77,6 +76,7 @@ export const projects: Project[] = [
     tags: ["PRODUCT", "WEB"],
     image: PLACEHOLDER_C,
     href: "/work/google-civics",
+    actionLabel: "Case study",
     tracks: ["tech"],
     content: {
       default: pendingCopy("case study summary pending"),
@@ -96,40 +96,29 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "tiny-world",
-    slug: "tiny-world",
-    index: "005",
-    name: "Tiny World",
-    tags: ["BRANDING", "WEB"],
-    image: PLACEHOLDER_E,
-    href: "/work/tiny-world",
-    tracks: ["tech"],
-    content: {
-      default: pendingCopy("case study summary pending"),
-    },
-  },
-  {
     id: "explorer-plus",
     slug: "explorer-plus",
     index: "006",
     name: "Explorer+",
     tags: ["PRODUCT", "DATA"],
-    image: PLACEHOLDER_F,
+    image: "/images/projects/Explorer%2B/cover.png",
     href: "/work/explorer-plus",
+    actionLabel: "Case study",
     tracks: ["design"],
     content: {
       default: pendingCopy("case study summary pending"),
     },
   },
   {
-    id: "vault",
-    slug: "vault",
+    id: "lift-plus",
+    slug: "lift-plus",
     index: "007",
-    name: "Vault",
-    tags: ["PRODUCT", "WEB"],
-    image: PLACEHOLDER_G,
-    href: "/work/vault",
-    tracks: ["design", "tech"],
+    name: "Lift+",
+    tags: ["PRODUCT", "DATA"],
+    image: "/images/projects/lift%2B/cover.jpg",
+    href: "/work/lift-plus",
+    actionLabel: "Case study",
+    tracks: ["design"],
     content: {
       default: pendingCopy("case study summary pending"),
     },

@@ -168,7 +168,6 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
               src={frame.src}
               todo={frame.todo}
               className="aspect-[16/9] w-full"
-              parallax={36}
             />
           ))}
         </div>

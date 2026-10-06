@@ -275,7 +275,7 @@ export function Identity({ headline }: IdentityProps) {
                 WHO I AM
               </h1>
 
-              <div className="relative aspect-[4/5] w-full overflow-hidden border-x border-t border-white/10 bg-[#121018] shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden border-x border-t border-white/10 bg-transparent">
                 <IdentityPortrait images={identityImages} />
 
                 <div

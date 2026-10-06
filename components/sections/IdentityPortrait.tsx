@@ -10,7 +10,7 @@ type IdentityPortraitProps = {
 /** Boxed portrait frame — fills a relative parent, not full-bleed */
 export function IdentityPortrait({ images }: IdentityPortraitProps) {
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#121018]">
+    <div className="absolute inset-0 overflow-hidden">
       <ScrollImageSwap images={images} />
     </div>
   );

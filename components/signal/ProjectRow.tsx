@@ -154,7 +154,7 @@ export function ProjectRow({ project, isActive, onActivate }: ProjectRowProps) {
             isActive ? "text-signal-green" : "text-white/40",
           )}
         >
-          <span>Launch</span>
+          <span>{project.actionLabel ?? "Launch"}</span>
           <ArrowUpRight className="size-3.5 shrink-0" aria-hidden />
         </Link>
       </span>

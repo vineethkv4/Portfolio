@@ -71,9 +71,9 @@ function pendingCase(input: {
 export const showcases: Showcase[] = [
   {
     slug: "loreal",
-    title: "L'Oréal ECHO. L'Oréal ECHO",
+    title: "L'Oréal ECHO",
     shortTitle: "L'Oréal ECHO",
-    headerColor: "#00cf2d",
+    headerColor: "#ce6fb6",
     lede: "Brand Power Echo — Global Analytics & Reporting Platform",
     facts: {
       role: "Lead Designer, design-to-code",
@@ -111,13 +111,18 @@ export const showcases: Showcase[] = [
       text: "The code you shared for the UI has been really helpful. For the UI, we only made minimal design adjustments, which allowed us to cut the workload by around 40–50%. For the functionality, we only needed to tweak some parts, resulting in a 20–30% reduction in effort compared to building everything from scratch.",
       attribution: "Engineering Lead, L'Oréal ECHO",
     },
-    images: frames(13),
+    images: [
+      "/images/projects/loreal_echo/cover.jpg",
+      "/images/projects/loreal_echo/01.jpg",
+      "/images/projects/loreal_echo/02.jpg",
+      "/images/projects/loreal_echo/03.jpg",
+    ],
     ctaStatement: "Have something to build?",
     ctaAccent: "I'm in.",
   },
   {
     slug: "official-charts",
-    title: "Official Charts. Official Charts",
+    title: "Official Charts",
     shortTitle: "Official Charts",
     headerColor: "#d25ebb",
     lede: "A fully responsive web-based tool designed to adapt seamlessly across web, tablet, and mobile — in both light and dark themes — under a tight delivery timeline.",
@@ -163,8 +168,9 @@ export const showcases: Showcase[] = [
   },
   pendingCase({
     slug: "google-civics",
-    title: "Google Civics. Google Civics",
+    title: "Google Civics",
     shortTitle: "Google Civics",
+    headerColor: "#FFFFFF",
     lede: "Civic information, designed to be scanned in seconds.",
     facts: {
       role: "UX Engineer",
@@ -193,7 +199,7 @@ export const showcases: Showcase[] = [
   }),
   pendingCase({
     slug: "tiny-world",
-    title: "Tiny World. Tiny World",
+    title: "Tiny World",
     shortTitle: "Tiny World",
     lede: "A small brand with a large visual voice.",
     facts: {
@@ -206,9 +212,9 @@ export const showcases: Showcase[] = [
   }),
   {
     slug: "explorer-plus",
-    title: "Explorer+. Explorer+",
+    title: "Explorer+",
     shortTitle: "Explorer+",
-    headerColor: "#00cf2d",
+    headerColor: "#6e72ff",
     lede: "Your All-in-One Data Exploration Suite",
     facts: {
       role: "UX Designer, UI Architect",
@@ -244,22 +250,74 @@ export const showcases: Showcase[] = [
       "The theming step itself — once a multi-day design task — now takes a maximum of 1 day.",
       "30+ clients onboarded onto the platform.",
     ],
-    // TODO: replace empty srcs with Explorer+ screenshots
-    images: ["", "", "", "", "", ""],
-    imageTodos: [
-      "Explorer+ Snapshot module screenshot",
-      "Explorer+ Crosstab module screenshot",
-      "Explorer+ Brand Analysis module screenshot",
-      "Explorer+ Ask Me module screenshot",
-      "Explorer+ Alerts module screenshot",
-      "Explorer+ Admin theming panel screenshot",
+    images: [
+      "/images/projects/Explorer%2B/cover.png",
+      "/images/projects/Explorer%2B/01.jpg",
+      "/images/projects/Explorer%2B/02.png",
+      "/images/projects/Explorer%2B/03.png",
+      "/images/projects/Explorer%2B/04.png",
+      "/images/projects/Explorer%2B/05.jpg",
+      "/images/projects/Explorer%2B/06.jpg",
+      "/images/projects/Explorer%2B/07.jpg",
+      "/images/projects/Explorer%2B/08.jpg",
+    ],
+    ctaStatement: "Have something to build?",
+    ctaAccent: "I'm in.",
+  },
+  {
+    slug: "lift-plus",
+    title: "Lift+",
+    shortTitle: "Lift+",
+    headerColor: "#e6c415",
+    lede: "Kantar's cross-channel measurement product.",
+    facts: {
+      role: "Dashboard design end to end",
+      scope: "Live product, newsletters",
+      tools: "UX, theme, admin customisation",
+      status: "Live",
+    },
+    overview: [
+      "Lift+ is Kantar's cross-channel measurement product. It shows brands which channels, creatives and audiences actually move their KPIs. I took it over in 2022 as a build project after a third party had handled the original design. I evolved it from the inside rather than restarting, so the live product never faced a disruptive relaunch.",
+    ],
+    myRole: [
+      "I owned the dashboard design end to end: UX flow, theme, and the admin customisation feature. I also designed the visual system for Lift+ newsletters, translating dense analysis into scannable one-pagers. Analysts supplied the findings; I gave them a format.",
+    ],
+    challenge: [
+      "The inherited dashboard had three problems.",
+      "No structure or flow. Content had no logical order, so users had no clear path through the data.",
+      "Randomly placed filters. Drill-down filters were scattered across the UI.",
+      "An inaccessible dark theme. The all-black UI created accessibility problems, particularly around readability.",
+      "The product was already live with real clients, so the redesign had to happen gradually, layered on top of the existing build.",
+    ],
+    built: {
+      paragraphs: [],
+      bullets: [
+        "Restructured UX flow. Findings are organised into a clear left-nav hierarchy — Drivers of Lift, Frequency Curves, Efficiencies, Effectiveness, Dimensionalized Result, Brand Impact on Sales.",
+        "Comparison-first analysis views. Frequency-curve widgets, such as Favourability and Intent, sit side by side for an at-a-glance comparison.",
+        "Summary + Dashboard view. Campaign Context, Brand Health Metrics, Suggested Optimizations and Expected Impact are surfaced together.",
+        "Full admin customisation in the client portal. Dashboard Management Mode lets an admin reorder widgets by drag-and-drop, show or hide them, add sub-widgets (Lift per Person, Direct vs Impact of Exposures), and edit widget text and comments inline — no developer or designer needed.",
+        "A new accessible theme, replacing the inaccessible dark theme.",
+        "Newsletter design. Visual system and layout for Lift+ case-study newsletters — KPI callouts, charts, and one-page takeaways.",
+      ],
+    },
+    impact: [
+      "Client dashboards are now fully self-serve: widget position, naming, and visibility changes that used to require a developer or designer are now handled by the client admin directly, inside the product.",
+    ],
+    images: [
+      "/images/projects/lift%2B/cover.jpg",
+      "/images/projects/lift%2B/01.jpg",
+      "/images/projects/lift%2B/02.jpg",
+      "/images/projects/lift%2B/03.jpg",
+      "/images/projects/lift%2B/04.jpg",
+      "/images/projects/lift%2B/05.jpg",
+      "/images/projects/lift%2B/06.jpg",
     ],
     ctaStatement: "Have something to build?",
     ctaAccent: "I'm in.",
   },
   pendingCase({
     slug: "vault",
-    title: "The Vault. The Vault",
+    title: "The Vault",
     shortTitle: "Vault",
     lede: "A gated body of work — shown only when it should be.",
     facts: {
