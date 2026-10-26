@@ -65,20 +65,37 @@ export const projects: Project[] = [
       tech: pendingCopy("Vineeth to write final copy — build-emphasis"),
     },
   },
-  //{
-  //  id: "google-civics",
-  //  slug: "google-civics",
-  //  index: "003",
-  //  name: "Google Civics",
-  //  tags: ["PRODUCT", "WEB"],
-  //  image: "/images/projects/googlecivic.jpg",
-  //  href: "/work/google-civics",
-  //  actionLabel: "Case study",
-  //  tracks: ["tech"],
-  //  content: {
-  //    default: pendingCopy("case study summary pending"),
-  //  },
-  //},
+  {
+    id: "google-civics",
+    slug: "google-civics",
+    index: "003",
+    name: "Google Civics",
+    tags: ["PRODUCT", "WEB"],
+    image: "/images/projects/googlecivic.jpg",
+    href: "/work/google-civics",
+    actionLabel: "Case study",
+    tracks: ["design", "tech"],
+    content: {
+      default: {
+        summary:
+          "Live election data platform behind Google's results experience.",
+        body:
+          "When India votes, millions turn to Google for results. Google Civics is where live election data is entered, checked, approved, and delivered — designed and built as the full Angular frontend.",
+      },
+      design: {
+        summary:
+          "Civic data UX built for speed, clarity, and pressure — not flair.",
+        body:
+          "Designed six focused workflows (sign-in through XML delivery) plus a micro mobile site for counting centres, with a light theme and forgiving controls for non-technical operators.",
+      },
+      tech: {
+        summary:
+          "Angular frontend and reusable component library for live elections.",
+        body:
+          "Owned the full frontend build: performance-tuned live tables, QC and approval flows, XML generation, and shared components so new regions don't start from scratch.",
+      },
+    },
+  },
   //{
   //  id: "design-forge",
   //  slug: "design-forge",

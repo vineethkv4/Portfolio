@@ -177,6 +177,11 @@ export function Connect() {
                 <li key={item.label}>
                   <a
                     href={item.href}
+                    download={
+                      "download" in item && item.download
+                        ? item.download
+                        : undefined
+                    }
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={
                       item.href.startsWith("http")

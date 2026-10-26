@@ -13,13 +13,12 @@ export const connectContent = {
     },
     {
       label: "GitHub",
-      // TODO: replace with real profile
-      href: "https://github.com/",
+      href: "https://github.com/vineethkv4/",
     },
     {
       label: "Resume",
-      // TODO: drop a PDF in /public and point here
-      href: "#",
+      href: "/resume/Vineeth_Vijayan_Resume_ProductDesigner.docx",
+      download: "Vineeth_Vijayan_Resume_ProductDesigner.docx",
     },
   ],
 } as const;

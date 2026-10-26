@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { EchoStudy } from "@/components/showcase/EchoStudy";
 import { ShowcaseBackButton } from "@/components/showcase/ShowcaseBackButton";
 import { ShowcaseHeading } from "@/components/showcase/ShowcaseHeading";
 import { ShowcaseMedia } from "@/components/showcase/ShowcaseMedia";
-import { type Showcase } from "@/data/showcases";
+import { type Showcase, type ShowcaseBullet } from "@/data/showcases";
 import { connectContent } from "@/content/sections/connect";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,16 @@ const fadeUp = {
 type ProjectShowcaseProps = {
   showcase: Showcase;
 };
+
+function BulletText({ item }: { item: ShowcaseBullet }) {
+  if (typeof item === "string") return item;
+  return (
+    <>
+      <strong className="font-medium text-white">{item.lead}</strong>
+      {item.rest}
+    </>
+  );
+}
 
 export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
   const frames = showcase.images.map((src, index) => ({
@@ -63,6 +74,11 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
     },
     { title: "Impact", paragraphs: showcase.impact },
   ];
+
+  if (showcase.rail?.length && showcase.screens?.length) {
+    return <EchoStudy showcase={showcase} />;
+  }
+
 
   const ctaLinks = [
     { label: "Email", href: `mailto:${connectContent.email}` },
@@ -135,11 +151,16 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
                     {section.bullets && section.bullets.length > 0 ? (
                       <ul className="mt-5 space-y-3 text-[15px] leading-relaxed text-white/80">
                         {section.bullets.map((item) => (
-                          <li key={item} className="flex gap-3">
+                          <li
+                            key={typeof item === "string" ? item : item.lead}
+                            className="flex gap-3"
+                          >
                             <span className="shrink-0 text-white/45" aria-hidden>
                               –
                             </span>
-                            <span>{item}</span>
+                            <span>
+                              <BulletText item={item} />
+                            </span>
                           </li>
                         ))}
                       </ul>
