@@ -6,9 +6,9 @@ import { getSignalTracks } from "@/lib/auth/vault";
 import { visibleProjectsForTracks } from "@/lib/signal/content";
 
 export const metadata: Metadata = {
-  title: "Signal",
+  title: "Selected UX & UI Projects",
   description:
-    "Selected product and client work — gated case studies shared privately.",
+    "Explore selected work across digital product design, responsive interfaces, design systems and frontend implementation.",
   robots: {
     index: false,
     follow: false,

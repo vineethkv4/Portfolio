@@ -18,11 +18,23 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vineeth Vijayan — UX Engineer",
-    template: "%s — Vineeth Vijayan",
+    default: "Vineeth Vijayan | Product Designer & UX Engineer",
+    template: "%s | Vineeth Vijayan",
   },
   description:
-    "Portfolio of Vineeth Vijayan, independent designer and UX engineer from Bangalore, India.",
+    "Vineeth Vijayan is a Product Designer with UX Engineering capabilities, crafting intuitive digital experiences through UX design, design systems and frontend development.",
+  openGraph: {
+    title: "Vineeth Vijayan | Product Designer & UX Engineer",
+    description:
+      "Vineeth Vijayan is a Product Designer with UX Engineering capabilities, crafting intuitive digital experiences through UX design, design systems and frontend development.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Vineeth Vijayan | Product Designer & UX Engineer",
+    description:
+      "Vineeth Vijayan is a Product Designer with UX Engineering capabilities, crafting intuitive digital experiences through UX design, design systems and frontend development.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

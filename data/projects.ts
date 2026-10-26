@@ -137,20 +137,19 @@ export const projects: Project[] = [
       default: pendingCopy("case study summary pending"),
     },
   },
-  
-{
-  id: "Behance",
-  slug: "Behance",
-  index: "005",
-  name: "Behance",
-  tags: ["UI", "Design"],
-  image: "/images/work-002.jpg",
-  href: "https://www.behance.net/vineethkv43218",
-  launchHref: "https://www.behance.net/vineethkv43218",
-  actionLabel: "Explore",
-  tracks: ["design"],
-  content: {
-    default: pendingCopy("case study summary pending"),
+  {
+    id: "design-explorations",
+    slug: "design-explorations",
+    index: "005",
+    name: "Design Explorations",
+    tags: ["UI", "Design"],
+    image: "/images/work-002.jpg",
+    href: "https://www.behance.net/vineethkv43218",
+    launchHref: "https://www.behance.net/vineethkv43218",
+    actionLabel: "View on Behance",
+    tracks: ["design"],
+    content: {
+      default: pendingCopy("case study summary pending"),
+    },
   },
-},
 ];
