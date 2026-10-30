@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { EchoStudy } from "@/components/showcase/EchoStudy";
+import { ScrollToTop } from "@/components/showcase/ScrollToTop";
 import { ShowcaseBackButton } from "@/components/showcase/ShowcaseBackButton";
 import { ShowcaseHeading } from "@/components/showcase/ShowcaseHeading";
 import { ShowcaseMedia } from "@/components/showcase/ShowcaseMedia";
@@ -233,6 +234,7 @@ export function ProjectShowcase({ showcase }: ProjectShowcaseProps) {
           ))}
         </nav>
       </footer>
+      <ScrollToTop tone="light" />
     </article>
   );
 }

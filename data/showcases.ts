@@ -159,35 +159,35 @@ export const showcases: Showcase[] = [
       { value: "20–30%", label: "Reduction in functionality build effort" },
     ],
     overview: [
-      "ECHO is L'Oréal's global brand analytics platform — a single dashboard consolidating brand health, equity, funnel, profiling, and trend data across markets, categories, brands, audiences, and study types. Built for leadership and marketing teams to compare brand performance, decode consumer perception, and track trends without waiting on a static report.",
+      "ECHO is L'Oréal's global brand analytics platform - a single dashboard consolidating brand health, equity, funnel, profiling, and trend data across markets, categories, brands, audiences, and study types. Built for leadership and marketing teams to compare brand performance, decode consumer perception, and track trends without waiting on a static report.",
       "Launched across 5 markets with more being added as the platform scales globally.",
     ],
     myRole: [
-      "Led the design team of 3 designers end-to-end — from data harmonisation and UX architecture through to interactive dashboard design. On the technical side, personally owned the design-to-code build, translating the design system into working frontend using an AI-assisted workflow via Cursor.",
-      "This dual ownership — designing the system and shipping the code behind it — meant less lost in translation between design intent and what actually got built.",
+      "Led the design team of 3 designers end-to-end - from data harmonisation and UX architecture through to interactive dashboard design. On the technical side, personally owned the design-to-code build, translating the design system into working frontend using an AI-assisted workflow via Cursor.",
+      "This dual ownership - designing the system and shipping the code behind it - meant less lost in translation between design intent and what actually got built.",
     ],
     challenge: [
-      "ECHO needed to hold an unusually large surface area of data — multiple study types, dozens of KPIs, brand-vs-brand comparisons, market filters, audience profiling — without turning into a wall of charts. Every module (Single Brand × Multi Country, Brand Ranking, Brand Profiling, Trends, and more) needed its own comparison logic, but all of it had to feel like one coherent system, not a stitched-together set of tools.",
-      "On top of the design problem, there was a delivery problem: six months of overall development, with new major modules — like Brand Profiling and Trends — needing to go from design to shipped code in roughly two weeks each.",
+      "ECHO needed to hold an unusually large surface area of data - multiple study types, dozens of KPIs, brand-vs-brand comparisons, market filters, audience profiling — without turning into a wall of charts. Every module (Single Brand × Multi Country, Brand Ranking, Brand Profiling, Trends, and more) needed its own comparison logic, but all of it had to feel like one coherent system, not a stitched-together set of tools.",
+      "On top of the design problem, there was a delivery problem: six months of overall development, with new major modules - like Brand Profiling and Trends - needing to go from design to shipped code in roughly two weeks each.",
     ],
     built: {
       paragraphs: [],
       bullets: [
         {
           lead: "A modular dashboard architecture",
-          rest: " — 7 live analysis modules (Single Country × Multi Brands, Single Brand × Multi Country, Single Brand × Targets, Multi Brand × Multi Country, Brand Ranking per KPI, Brand Profiling, Trends), with 6 more in the roadmap (Mappings, Category Drivers, Cross Category Analysis, Megabrand, Touch Points, Ad Module) — all sharing one consistent visual and interaction language.",
+          rest: " - 7 live analysis modules (Single Country × Multi Brands, Single Brand × Multi Country, Single Brand × Targets, Multi Brand × Multi Country, Brand Ranking per KPI, Brand Profiling, Trends), with 6 more in the roadmap (Mappings, Category Drivers, Cross Category Analysis, Megabrand, Touch Points, Ad Module) — all sharing one consistent visual and interaction language.",
         },
         {
           lead: "A structured filtering system",
-          rest: " for market, time period (by half-year, fiscal year, or custom range), and brand/category selection — built to stay usable as the number of markets grows.",
+          rest: " for market, time period (by half-year, fiscal year, or custom range), and brand/category selection - built to stay usable as the number of markets grows.",
         },
         {
           lead: "Dense, multi-brand comparison views",
-          rest: " — side-by-side KPI, ranking, and perception charts across competitor brands, designed to stay legible even at high data density.",
+          rest: " - side-by-side KPI, ranking, and perception charts across competitor brands, designed to stay legible even at high data density.",
         },
         {
           lead: "A design-to-code pipeline",
-          rest: " — using Cursor to take modules like Brand Profiling and Trends from Figma to functioning frontend in about two weeks, keeping design fidelity intact through the handoff.",
+          rest: " - using Cursor to take modules like Brand Profiling and Trends from Figma to functioning frontend in about two weeks, keeping design fidelity intact through the handoff.",
         },
       ],
     },
@@ -219,7 +219,7 @@ export const showcases: Showcase[] = [
     screens: [
       {
         src: "/images/projects/loreal_echo/cover.jpg",
-        caption: "Brand Power Echo — Global Analytics & Reporting Platform",
+        caption: "Brand Power Echo - Global Analytics & Reporting Platform",
         alt: "Brand Power Echo key visual for the L'Oréal ECHO dashboard",
       },
       {
@@ -265,15 +265,23 @@ export const showcases: Showcase[] = [
       { id: "screens", label: "Screens" },
     ],
     facts: {
-      role: "UX/UI Design, Prototyping",
-      scope: "Web, tablet, mobile · light + dark",
+      role: "UX/UI Design · Prototyping · UX Engineer",
+      scope:
+        "30 years of chart data · 4 cloud sources · Web, tablet, mobile · Light + dark",
       tools: "Figma",
       status: "Delivered",
     },
     meta: [
       { label: "Product", value: "Official Charts Pro (OCC)" },
-      { label: "Role", value: "UX/UI Design, Prototyping" },
-      { label: "Scope", value: "Web, tablet, mobile · light + dark" },
+      {
+        label: "Role",
+        value: "UX/UI Design · Prototyping · UX Engineer",
+      },
+      {
+        label: "Scope",
+        value:
+          "30 years of chart data · 4 cloud sources · Web, tablet, mobile · Light + dark",
+      },
       { label: "Status", value: "Delivered" },
     ],
     chips: [
@@ -284,32 +292,32 @@ export const showcases: Showcase[] = [
     ],
     overview: [
       "The OCC tool was built under a tight timeline, adding real pressure to an already complex brief: a fully responsive web-based tool that needed to work seamlessly across desktop, tablet, and mobile, in both light and dark themes.",
-      "Since responsive design was still a growing area for our team at the time, I took the lead in researching, learning, and experimenting to get the execution right.",
+      "Kantar's dashboards are data-dense by nature, and until Official Charts they had only ever been delivered for the web. Taking 30 years of chart data to tablet and mobile meant rethinking how complex tables, charts and filters behave on small screens. I led that work: researching patterns, prototyping them, and working with developers to ship them.",
     ],
     myRole: [
       "I led the responsive design approach for the tool, taking the initiative to research and test patterns for adapting complex layouts across breakpoints and themes, then translating that into detailed, interactive prototypes.",
     ],
     challenge: [
-      "Responsive design across three device classes and two themes is a demanding brief on its own — doing it with a team new to the discipline, on a short timeline, raised the stakes further.",
-      "The tool also carried genuinely complex design functionality, which meant every responsive decision had to hold up under real interaction, not just look right in a static frame.",
+      "Official Charts PRO puts three decades of music data in one place, pulled from four separate cloud servers. The data could not simply be merged. Each source had its own structure and its own load behaviour, and users still needed one fast, consistent experience. On top of that, Kantar had only delivered web dashboards before. Charts, wide tables and filter-heavy views had to work on tablet and mobile without losing depth, in both light and dark themes.",
     ],
     built: {
-      paragraphs: [
-        "To manage the complexity, I built detailed interactive prototypes in Figma, which let the team work through tricky design functionality before it hit development.",
-      ],
+      paragraphs: [],
       bullets: [
-        "Researched and tested responsive patterns across web, tablet, and mobile breakpoints",
-        "Designed a consistent light and dark theme system across every screen state",
-        "Built high-fidelity interactive Figma prototypes to validate complex functionality pre-build",
+        "A unified dashboard experience that hides the 4-source complexity, with consistent loading, empty and error states",
+        "Responsive layouts for web, tablet and mobile, including how large tables, charts and filters adapt at each breakpoint",
+        "Light and dark themes built on shared design tokens",
+        "Interactive prototypes used to test patterns with stakeholders and developers before build",
+        "Hands-on UX engineering: close collaboration with developers and implementing responsive behaviour where needed",
       ],
     },
-    impact: [],
-    impactBullets: [
-      {
-        lead: "A polished, fully responsive tool that exceeded client expectations",
-        rest: " — praised for its interactivity, usability, and consistency across themes, and a strong example of delivering high-quality design under real constraints.",
-      },
+    // TODO(vineeth): confirm and fill, or delete if not true
+    // - First Kantar dashboard delivered across web, tablet and mobile
+    // - Responsive patterns reused in [project name]
+    // - [X]% of sessions from tablet and mobile
+    impact: [
+      "Powered by Kantar data from 15,000 points of distribution, covering 99%+ of UK music consumption and 90%+ of physical and digital home entertainment transactional sales.",
     ],
+    impactBullets: [],
     images: [
       "/images/projects/official_charts/cover.jpg",
       "/images/projects/official_charts/01.jpg",
@@ -376,7 +384,7 @@ export const showcases: Showcase[] = [
       status: "4 state elections, no failures",
     },
     meta: [
-      { label: "Client", value: "Google · Kantar ACE" },
+      { label: "Client", value: "Google - Kantar" },
       { label: "Role", value: "UX Engineer / Designer" },
       { label: "Stack", value: "Angular frontend" },
       { label: "Status", value: "Live · expanding globally" },
@@ -567,26 +575,26 @@ export const showcases: Showcase[] = [
       { value: "1 day", label: "Max time for client theming" },
     ],
     overview: [
-      "Explorer+ puts brand tracking data in the hands of the people who need it. It's an insights-ready exploration platform that lets teams interrogate a single data source — self-serve analysis and visual reporting, without waiting on an analyst to pull a report. Built to simplify data analysis and visualization so users can explore performance, uncover insights, and make faster, smarter decisions without needing technical expertise.",
+      "Explorer+ puts brand tracking data in the hands of the people who need it. It's an insights-ready exploration platform that lets teams interrogate a single data source - self-serve analysis and visual reporting, without waiting on an analyst to pull a report. Built to simplify data analysis and visualization so users can explore performance, uncover insights, and make faster, smarter decisions without needing technical expertise.",
       "Onboarded by 30+ clients.",
     ],
     myRole: [
-      "UX Designer and UI Architect on Explorer+. Worked directly with project managers on the requirement — teams needed to know the moment a brand's performance crossed a benchmark, above or below — and sat with the team to shape that into the Alerts feature, owning the UX side of the solution. Also designed the admin panel for theme customization, built to let one non-technical admin spin up a complete client dashboard — no developer or designer involvement required — and switch the visual theme to match each client's brand guidelines.",
+      "UX Designer and UI Architect on Explorer+. Worked directly with project managers on the requirement - teams needed to know the moment a brand's performance crossed a benchmark, above or below - and sat with the team to shape that into the Alerts feature, owning the UX side of the solution. Also designed the admin panel for theme customization, built to let one non-technical admin spin up a complete client dashboard - no developer or designer involvement required - and switch the visual theme to match each client's brand guidelines.",
     ],
     challenge: [
-      "The admin panel needed to let a non-designer configure a fully branded dashboard for any client, but the person running that setup wasn't equipped to make design decisions — color systems, styling, brand fidelity weren't their skillset. The fix was a theme upload flow: a designer sets a client's brand colors in a lightweight Excel-based tool — a five-minute task well within a designer's comfort zone — and the rest of the dashboard's theme switches over automatically, no manual restyling required.",
+      "The admin panel needed to let a non-designer configure a fully branded dashboard for any client, but the person running that setup wasn't equipped to make design decisions - color systems, styling, brand fidelity weren't their skillset. The fix was a theme upload flow: a designer sets a client's brand colors in a lightweight Excel-based tool - a five-minute task well within a designer's comfort zone - and the rest of the dashboard's theme switches over automatically, no manual restyling required.",
     ],
     built: {
       paragraphs: [
         "Four core exploration modules, one consistent interaction language, plus the systems that make the platform scale across clients:",
       ],
       bullets: [
-        "Snapshot — visualization module supporting pie charts, bar charts, sortable tables, and aster plots",
-        "Crosstab — dynamic table generation with slice, dice, and filtering capabilities for granular-level analysis",
-        "Brand Analysis — brand performance assessment via KPIs grouped into Brand Dependent and Brand Independent categories",
-        "Ask Me — natural-language query module that pulls instant insights from Snapshot, Crosstab, or Brand Analysis, removing the need for manual selection",
-        "Alerts — threshold-based notifications when a benchmark exceeds or drops",
-        "Admin theming panel — a five-minute, designer-driven color upload flow that lets one admin platform stand up fully branded dashboards for any client, with no per-client dev or design work",
+        "Snapshot - visualization module supporting pie charts, bar charts, sortable tables, and aster plots",
+        "Crosstab - dynamic table generation with slice, dice, and filtering capabilities for granular-level analysis",
+        "Brand Analysis - brand performance assessment via KPIs grouped into Brand Dependent and Brand Independent categories",
+        "Ask Me - natural-language query module that pulls instant insights from Snapshot, Crosstab, or Brand Analysis, removing the need for manual selection",
+        "Alerts - threshold-based notifications when a benchmark exceeds or drops",
+        "Admin theming panel - a five-minute, designer-driven color upload flow that lets one admin platform stand up fully branded dashboards for any client, with no per-client dev or design work",
       ],
     },
     impact: [],
@@ -722,12 +730,12 @@ export const showcases: Showcase[] = [
     built: {
       paragraphs: [],
       bullets: [
-        "Restructured UX flow. Findings are organised into a clear left-nav hierarchy — Drivers of Lift, Frequency Curves, Efficiencies, Effectiveness, Dimensionalized Result, Brand Impact on Sales.",
+        "Restructured UX flow. Findings are organised into a clear left-nav hierarchy - Drivers of Lift, Frequency Curves, Efficiencies, Effectiveness, Dimensionalized Result, Brand Impact on Sales.",
         "Comparison-first analysis views. Frequency-curve widgets, such as Favourability and Intent, sit side by side for an at-a-glance comparison.",
         "Summary + Dashboard view. Campaign Context, Brand Health Metrics, Suggested Optimizations and Expected Impact are surfaced together.",
         "Full admin customisation in the client portal. Dashboard Management Mode lets an admin reorder widgets by drag-and-drop, show or hide them, add sub-widgets (Lift per Person, Direct vs Impact of Exposures), and edit widget text and comments inline — no developer or designer needed.",
         "A new accessible theme, replacing the inaccessible dark theme.",
-        "Newsletter design. Visual system and layout for Lift+ case-study newsletters — KPI callouts, charts, and one-page takeaways.",
+        "Newsletter design. Visual system and layout for Lift+ case-study newsletters - KPI callouts, charts, and one-page takeaways.",
       ],
     },
     impact: [],

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { animate, useInView, useReducedMotion } from "framer-motion";
 import { ScrollTracker } from "@/components/case-study/ScrollTracker";
 import { ShowcaseBackButton } from "@/components/showcase/ShowcaseBackButton";
+import { ScrollToTop } from "@/components/showcase/ScrollToTop";
 import { ShowcaseLightbox } from "@/components/showcase/ShowcaseLightbox";
 import {
   type Showcase,
@@ -54,9 +55,11 @@ export function EchoStudy({ showcase }: { showcase: Showcase }) {
   const hero = showcase.screens?.[0];
   const titles = showcase.sectionTitles;
   const heroLines =
-    showcase.title === "L'Oréal ECHO Dashboard"
-      ? ["L'Oréal", "ECHO", "Dashboard"]
-      : [showcase.title];
+    {
+      "L'Oréal ECHO Dashboard": ["L'Oréal", "ECHO"],
+      "Official Charts": ["Official", "Charts"],
+      "Google Civics": ["Google", "Civics"],
+    }[showcase.title] ?? [showcase.title];
 
   const railSections = useMemo(
     () =>
@@ -96,10 +99,6 @@ export function EchoStudy({ showcase }: { showcase: Showcase }) {
 
   return (
     <article className="echo-study">
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Newsreader:ital@1&family=Oswald:wght@600&display=swap"
-      />
       <header className="hero">
         <ShowcaseBackButton className="close" label="Close case study">
           ×
@@ -220,6 +219,7 @@ export function EchoStudy({ showcase }: { showcase: Showcase }) {
           </div>
         </section>
 
+        <ScrollToTop />
         <footer className="cta">
           {/* TODO: point this CTA at the contact destination. */}
           <a href={showcase.ctaHref ?? "#"}>

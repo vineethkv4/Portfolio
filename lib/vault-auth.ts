@@ -1,4 +1,5 @@
 import { SignJWT, jwtVerify } from "jose";
+import { digestEqual } from "@/lib/auth/secret-compare";
 
 export const VAULT_COOKIE_NAME = "vault_session";
 export const VAULT_COOKIE_MAX_AGE = 60 * 60 * 24; // 24 hours
@@ -43,6 +44,6 @@ export async function verifyVaultToken(token: string): Promise<boolean> {
   }
 }
 
-export function verifyPasscode(input: string): boolean {
-  return input === getVaultPasscode();
+export async function verifyPasscode(input: string): Promise<boolean> {
+  return digestEqual(input, getVaultPasscode());
 }

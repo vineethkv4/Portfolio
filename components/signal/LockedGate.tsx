@@ -48,8 +48,19 @@ export function LockedGate() {
 
       setSuccess(true);
       sessionStorage.setItem(SIGNAL_SESSION_STARTED_KEY, String(Date.now()));
+      const next = new URLSearchParams(window.location.search).get("next");
+      const returnTo =
+        next &&
+        next.startsWith("/work/") &&
+        !next.startsWith("//") &&
+        !next.includes("..") &&
+        !next.includes("\\") &&
+        !next.includes("?")
+          ? next
+          : null;
       window.setTimeout(() => {
-        router.refresh();
+        if (returnTo) router.push(returnTo);
+        else router.refresh();
       }, 300);
     } catch {
       setError("Something went wrong. Please retry.");

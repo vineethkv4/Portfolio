@@ -31,7 +31,8 @@ export function ShowcaseLightbox({ src, alt, caption }: ShowcaseLightboxProps) {
           <DialogPrimitive.Close className="echo-lb-x" aria-label="Close preview">
             ×
           </DialogPrimitive.Close>
-          <Image src={src} alt={alt} width={1600} height={1000} sizes="92vw" />
+          {/* Native img so a tall screen keeps its real height and can scroll. */}
+          <img src={src} alt={alt} className="echo-lb-img" />
           <p className="echo-lb-cap">{caption}</p>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>

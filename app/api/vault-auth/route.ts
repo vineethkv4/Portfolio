@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { allowAttempt, clientAddress } from "@/lib/auth/rate-limit";
 import {
   VAULT_COOKIE_MAX_AGE,
   VAULT_COOKIE_NAME,
@@ -12,10 +13,17 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
+    if (!allowAttempt(`vault:${clientAddress(request)}`)) {
+      return NextResponse.json(
+        { ok: false, error: "Too many attempts. Try again later." },
+        { status: 429 },
+      );
+    }
+
     const body = (await request.json()) as { passcode?: string };
     const passcode = body.passcode?.trim() ?? "";
 
-    if (!passcode || !verifyPasscode(passcode)) {
+    if (!passcode || !(await verifyPasscode(passcode))) {
       return NextResponse.json(
         { ok: false, error: "Invalid passcode" },
         { status: 401 },
